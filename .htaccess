@@ -1,0 +1,15 @@
+<IfModule mod_rewrite.c>
+        RewriteEngine On
+        RewriteBase /
+        # Removes index.php
+        RewriteCond $1 !\.(gif|jpe?g|png)$ [NC]
+        RewriteCond %{REQUEST_FILENAME} !-f
+        RewriteCond %{REQUEST_FILENAME} !-d
+        RewriteRule ^(.*)$ /index.php/$1 [L]
+
+        RewriteCond %{THE_REQUEST} ^[A-Z]{3,}\s(.*)/index\.php [NC]
+        RewriteRule ^ %1 [R=301,L]
+
+        # If 404s, "No Input File" or every URL returns the same thing
+        # make it /index.php?/$1 above (add the question mark)
+</IfModule>
