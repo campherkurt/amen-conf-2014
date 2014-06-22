@@ -407,7 +407,7 @@ $(document).ready(function(){
 		test: Modernizr.placeholder,
 		nope: '_include/js/placeholder.js', 
 		complete : function() {
-				if (!Modernizr.placeholder) {
+		/*		if (!Modernizr.placeholder) {
 						Placeholders.init({
 						live: true,
 						hideOnFocus: false,
@@ -415,6 +415,7 @@ $(document).ready(function(){
 						textColor: "#999"
 						});    
 				}
+        */
 		}
 	}
 	]);
