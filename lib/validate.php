@@ -2,7 +2,7 @@
 
 class Validate {
     
-    private $error_arr = array();
+    private $error_arr = array('success'=>false, 'error_list'=>array());
     private $post_data = array();
     private $fields_to_check = array();
 
@@ -13,7 +13,7 @@ class Validate {
     }
 
     function valid() {
-        if ($this->error_arr) {
+        if ($this->error_arr['error_list']) {
             return false;
         }
         return true;
@@ -31,12 +31,16 @@ class Validate {
         
     }
 
+    private function add_error($field_name, $message) {
+       $this->error_arr['error_list'][] = array('field_name'=>$field_name, 'message'=>$message); 
+    }
+
     private function check_required() {
         foreach($this->fields_to_check as $check_field){
            $field_name = $check_field['field_name'];
-           if ($check_field['required'] === true && !isset($this->post_data[$field_name])) {
-               $this->error_arr[$field_name] = "This field is required.";
-               break;
+          if ($check_field['required'] === true && empty($this->post_data[$field_name])) {
+               $this->add_error($field_name, 'This field is required.');
+               //break;
            }
         }
     } 
@@ -44,12 +48,12 @@ class Validate {
     private function check_honee_pot() {
         $honee_pot_field = $_POST['address1'];
         if (!empty($honee_pot_field)) {
-            $this->error_arr["main"] = "Incorrect field added.";    
+            $this->add_error("main", "Incorrect field added."); 
         }        
     }
 
     private function sanitize_post_data() {
-        if ($this->error_arr) {
+        if ($this->error_arr['error_list']) {
             return ;
         }
         $cleaned_post_data = array();
@@ -62,7 +66,7 @@ class Validate {
                 case 'email':
                     $email = FILTER_VAR($this->post_data[$field_name], FILTER_VALIDATE_EMAIL);;
                     if (!$email) {
-                        $this->error_arr[$field_name] = "Please enter a valid email address.";
+                        $this->add_error($field_name, "Please enter a valid email address.");
                         return ;
                     }
                     $cleaned_post_data[$field_name] = $email;
@@ -70,7 +74,7 @@ class Validate {
                 case 'date':
                     $date = DateTime::createFromFormat('d-m-Y', $this->post_data[$field_name]);
                     if (!$date) {
-                        $this->error_arr[$field_name] = "Please enter a valid date. (dd-mm-yyyy)";
+                        $this->add_error($field_name, "Please enter a valid date. (dd-mm-yyyy)");
                         return ;
                     }
                     $cleaned_post_data[$field_name] = $date;
@@ -78,7 +82,7 @@ class Validate {
                 case 'numeric':
                     $value = preg_replace('/[+|\s|-]/', "", $this->post_data[$field_name]);
                     if (!$value) {
-                        $this->error_arr[$field_name] = "Please enter a valid number.";
+                        $this->add_error($field_name, "Please enter a valid number.");
                         return ;
                     }
                     $cleaned_post_data[$field_name] = $value;
@@ -86,7 +90,7 @@ class Validate {
                 case 'boolean':
                     $value = is_bool($this->post_data[$field_name]);
                     if (!$value) {
-                        $this->error_arr[$field_name] = "Please enter a valid choice.";
+                        $this->add_error($field_name, "Please enter a valid choice.");
                         return ;
                     }
                     $cleaned_post_data[$field_name] = $this->post_data[$field_name] === true ? 1 : 0;
@@ -98,7 +102,17 @@ class Validate {
                     $values = (strpos($values, ',') > -1) ?  $values_arr = str_split(',', $values) :  $values_arr = array($values);
                     foreach($values as $val){
                         if (!in_array(strtolower($val), $defaults)) {
-                            $this->error_arr[$field_name] = "Please enter a valid choice.";
+                            $this->add_error($field_name, "Please enter a valid choice.");
+                            break;
+                        }    
+                    }
+
+                case 'checkbox':
+                    $defaults = $field_check['defaults'];   
+                    $values = $this->post_data[$field_name];
+                    foreach($values as $val){
+                        if (!in_array(strtolower($val), $defaults)) {
+                            $this->add_error($field_name, "Please enter a valid choice.");
                             break;
                         }    
                     }
