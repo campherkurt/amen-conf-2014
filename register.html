@@ -167,9 +167,9 @@
                             </p>
                             <h3 class="personal-info">Payment</h3>
                             <div class="payment">
-                                <p>Food and Accommodation not included</p><br />
+                                <p id="ticket_blurb">Food and Accommodation not included</p><br />
                                 
-                                <p class="selected-price">Entry Ticket - R200</p><br />
+                                <p class="selected-price" id="ticket_name">Entry Ticket - R200</p><br />
                                 
                                 <p><strong>Why become a Conference Sponsor?</strong><br />
     
@@ -181,9 +181,9 @@
                                 <p>Meals will be provided at R75 per day. This amount includes breakfast, lunch and supper. Please keep in mind that this is a separate cost.</p><br />
                                 <p>I would like to order meals for ...</p>
                                 <p class="reg-meals">
-                                    <input id="" type="checkbox" name="meals" value="sabbath">Sabbath
-                                    <input id="" type="checkbox" name="meals" value="sunday">Sunday
-                                    <input id="" type="checkbox" name="meals" value="monday">Monday
+                                    <input id="" type="checkbox" name="meals[]" value="sabbath">Sabbath
+                                    <input id="" type="checkbox" name="meals[]" value="sunday">Sunday
+                                    <input id="" type="checkbox" name="meals[]" value="monday">Monday
                             	</p>
 							</div>
                             
@@ -212,8 +212,8 @@
                             <div class="payment">
                             	<p>Email Newsletter</p><br />
                             	<p class="reg-newsletter">
-                                    <input id="" type="checkbox" name="newsletter" value="conf_updates">I would like to receive Conference updates only.
-                                    <input id="" type="checkbox" name="newsletter" value="monthly">I would like to receive your monthly email newsletter.
+                                    <input id="" type="checkbox" name="newsletter[]" value="conf_updates">I would like to receive Conference updates only.
+                                    <input id="" type="checkbox" name="newsletter[]" value="monthly">I would like to receive your monthly email newsletter.
                                 </p>
 							</div>
                             
@@ -261,6 +261,7 @@
 <script src="_include/js/plugins.js"></script> <!-- Contains: jPreloader, jQuery Easing, jQuery ScrollTo, jQuery One Page Navi -->
 <script src="_include/js/jquery.validate.js"></script> <!-- Only for the registration page -->
 <script src="_include/js/placeholder.js"></script> <!-- Only for the registration page -->
+<script src="_include/js/jquery.cookie.js"></script>
 <script src="_include/js/register.js"></script> <!-- Only for the registration page -->
 <script src="_include/js/main.js"></script> <!-- Default JS -->
 
