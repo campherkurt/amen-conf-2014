@@ -5,6 +5,7 @@ class Validate {
     private $error_arr = array('success'=>false, 'error_list'=>array());
     private $post_data = array();
     private $fields_to_check = array();
+    private $cleaned_data;
 
     function __construct(array $post, array $fields_to_check){
         $this->post_data = $post;
@@ -16,7 +17,7 @@ class Validate {
         if ($this->error_arr['error_list']) {
             return false;
         }
-        return true;
+        return $this->cleaned_data;
     }
 
     function get_error_messages() {
@@ -61,7 +62,7 @@ class Validate {
             $field_name = $field_check['field_name'];
             switch ($field_check['type']) {
                 case 'string':
-                    $cleaned_post_data[$field_name] = htmlentities($this->post_data[$field_name]);
+                    $cleaned_post_data[$field_name] = mysql_escape_string($this->post_data[$field_name]);
                     break;
                 case 'email':
                     $email = FILTER_VAR($this->post_data[$field_name], FILTER_VALIDATE_EMAIL);;
@@ -69,7 +70,7 @@ class Validate {
                         $this->add_error($field_name, "Please enter a valid email address.");
                         return ;
                     }
-                    $cleaned_post_data[$field_name] = $email;
+                    $cleaned_post_data[$field_name] = mysql_escape_string($email);
                     break;
                 case 'date':
                     $date = DateTime::createFromFormat('d-m-Y', $this->post_data[$field_name]);
@@ -77,7 +78,7 @@ class Validate {
                         $this->add_error($field_name, "Please enter a valid date. (dd-mm-yyyy)");
                         return ;
                     }
-                    $cleaned_post_data[$field_name] = $date;
+                    $cleaned_post_data[$field_name] = $date->format('Y-m-d H:i:s');
                     break;
                 case 'numeric':
                     $value = preg_replace('/[+|\s|-]/', "", $this->post_data[$field_name]);
@@ -85,7 +86,7 @@ class Validate {
                         $this->add_error($field_name, "Please enter a valid number.");
                         return ;
                     }
-                    $cleaned_post_data[$field_name] = $value;
+                    $cleaned_post_data[$field_name] = mysql_escape_string($value);
                     break;
                 case 'boolean':
                     $value = is_bool($this->post_data[$field_name]);
@@ -96,16 +97,15 @@ class Validate {
                     $cleaned_post_data[$field_name] = $this->post_data[$field_name] === true ? 1 : 0;
                     break;
 
-                case 'specific':
+                case 'radio':
                     $defaults = $field_check['defaults'];   
-                    $values = $this->post_data[$field_name];
-                    $values = (strpos($values, ',') > -1) ?  $values_arr = str_split(',', $values) :  $values_arr = array($values);
-                    foreach($values as $val){
-                        if (!in_array(strtolower($val), $defaults)) {
-                            $this->add_error($field_name, "Please enter a valid choice.");
-                            break;
-                        }    
-                    }
+                    $value = strtolower($this->post_data[$field_name]);
+                    if (!in_array($value, $defaults)) {
+                        $this->add_error($field_name, "Please enter a valid choice.");
+                        return ;
+                    }    
+                    $cleaned_post_data[$field_name] = mysql_escape_string($value);
+                    break;
 
                 case 'checkbox':
                     $defaults = $field_check['defaults'];   
@@ -113,13 +113,15 @@ class Validate {
                     foreach($values as $val){
                         if (!in_array(strtolower($val), $defaults)) {
                             $this->add_error($field_name, "Please enter a valid choice.");
-                            break;
+                            return ;
                         }    
                     }
+                    $cleaned_post_data[$field_name] = mysql_escape_string(join('|', $values));
+                    break;
             }
             
         }        
-        $this->post_data = $cleaned_post_data; 
+        $this->cleaned_data = $cleaned_post_data; 
     }
 
 }
