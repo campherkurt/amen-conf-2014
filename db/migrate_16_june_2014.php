@@ -14,11 +14,10 @@ create table registration(
    gender VARCHAR(5) NOT NULL,
    entry_type VARCHAR(10) NOT NULL,
    entry_location VARCHAR(20) NOT NULL,
-   meals VARCHAR(40),
+   meals VARCHAR(100),
    accomodation VARCHAR(70),
    payment VARCHAR(15) NOT NULL,
-   newsletter_conf BOOLEAN,
-   newsletter_monthly BOOLEAN,
+   newsletters VARCHAR(100),
    submission_date DATE NOT NULL,
    PRIMARY KEY ( reg_id )
 );
