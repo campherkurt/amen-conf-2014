@@ -60,6 +60,10 @@ class Validate {
         $cleaned_post_data = array();
         foreach($this->fields_to_check as $field_check){
             $field_name = $field_check['field_name'];
+            if (!isset($this->post_data[$field_name])) {
+                $cleaned_post_data[$field_name] = '';
+                continue;
+            }
             switch ($field_check['type']) {
                 case 'string':
                     $cleaned_post_data[$field_name] = mysql_escape_string($this->post_data[$field_name]);
