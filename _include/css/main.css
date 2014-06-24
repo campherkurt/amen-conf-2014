@@ -218,7 +218,7 @@ h2{
 }
 
 h3{
-	font-size:24px;
+	font-size:20px;
 }
 
 h4{
@@ -1699,4 +1699,14 @@ footer .credits {
           transition: none;
 }
 
-
+@media only screen and (max-width: 1200px) {
+    .title-description { font-size:15px;}
+ }
+@media (max-width: 979px) and (min-width: 768px){
+    .span3 { width:380px !important;}
+ }
+.error {
+    color: #F20F29;
+    font-size: 14px;         
+     
+}

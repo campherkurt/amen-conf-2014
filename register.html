@@ -145,28 +145,31 @@
                     <h3 class="title-description">&nbsp;</h3>
                     <div class="register-copy">
                     	<form id="reg-form" class="reg-form" action="#">
+                            <input type="hidden" name="entry_type" value="entry">
+                            <input type="hidden" name="entry_location" value="ct">
+                            <input type="hidden" name="address1" value="">
                         	<h3 class="personal-info">Personal Information</h3>
                             <p class="reg-name">
-                                <input id="reg_name" type="text" placeholder="Full Name" value="" name="name" />
+                                <input id="reg_name" type="text" placeholder="Full Name" value="" name="full_name" />
                             </p>
                             <p class="reg-DOB">
-                                <input id="reg_DOB" type="text" placeholder="Date of Birth" value="" name="DOB" />
+                                <input id="reg_DOB" type="text" placeholder="Date of Birth" value="" name="dob" />
                             </p>
                             <p class="reg-email">
                                 <input id="reg_email" type="text" placeholder="Email Address" value="" name="email" />
                             </p>
                             <p class="reg-number">
-                                <input id="reg_number" type="text" placeholder="Contact Number" value="" name="number" />
+                                <input id="reg_number" type="text" placeholder="Contact Number" value="" name="mobile" />
                             </p>
                             <p class="reg-gender">
-                                <input id="reg_gender" type="radio" name="sex" value="male">Male
-								<input id="reg_gender" type="radio" name="sex" value="female">Female
+                                <input id="" type="radio" name="gender" value="m">Male
+								<input id="" type="radio" name="gender" value="f">Female
                             </p>
                             <h3 class="personal-info">Payment</h3>
                             <div class="payment">
-                                <p>Food and Accommodation not included</p><br />
+                                <p id="ticket_blurb">Food and Accommodation not included</p><br />
                                 
-                                <p class="selected-price">Entry Ticket - R200</p><br />
+                                <p class="selected-price" id="ticket_name">Entry Ticket - R200</p><br />
                                 
                                 <p><strong>Why become a Conference Sponsor?</strong><br />
     
@@ -178,9 +181,9 @@
                                 <p>Meals will be provided at R75 per day. This amount includes breakfast, lunch and supper. Please keep in mind that this is a separate cost.</p><br />
                                 <p>I would like to order meals for ...</p>
                                 <p class="reg-meals">
-                                    <input id="reg_meals" type="checkbox" name="meals" value="Sabbath">Sabbath
-                                    <input id="reg_meals" type="checkbox" name="meals" value="Sunday">Sunday
-                                    <input id="reg_meals" type="checkbox" name="meals" value="Monday">Monday
+                                    <input id="" type="checkbox" name="meals[]" value="sabbath">Sabbath
+                                    <input id="" type="checkbox" name="meals[]" value="sunday">Sunday
+                                    <input id="" type="checkbox" name="meals[]" value="monday">Monday
                             	</p>
 							</div>
                             
@@ -189,8 +192,8 @@
                                 <p>The campus residence will be available to those who would prefer to stay at CPUT for the duration of the Conference.You will be charged separately for booking a room. Room per person per night are R120. R360 for the whole weekend.</p><br />
                                 
                                 <p class="reg-accomodation">
-                                    <input id="reg_accomodation" type="radio" name="accomodation" value="Yes">Yes
-                                    <input id="reg_accomodation" type="radio" name="accomodation" value="No">No
+                                    <input id="" type="radio" name="accomodation" value="yes">Yes
+                                    <input id="" type="radio" name="accomodation" value="no">No
                                 </p>
 							</div>
                             
@@ -198,9 +201,9 @@
                             <div class="payment">
                             	<p>Type</p><br />
                             	<p class="reg-payment">
-                                    <input id="reg_payment" type="radio" name="payment" value="EFT">EFT
-                                    <input id="reg_payment" type="radio" name="payment" value="Deposit">Deposit
-                                    <input id="reg_payment" type="radio" name="payment" value="Cheque">Cheque
+                                    <input id="" type="radio" name="payment" value="eft">EFT
+                                    <input id="" type="radio" name="payment" value="deposit">Deposit
+                                    <input id="" type="radio" name="payment" value="cheque">Cheque
                                 </p><br />
                                 <p><i>*Please add your Name and Surname as a reference when making a payment.</i></p>
 							</div>
@@ -209,8 +212,8 @@
                             <div class="payment">
                             	<p>Email Newsletter</p><br />
                             	<p class="reg-newsletter">
-                                    <input id="reg_newsletter" type="checkbox" name="newsletter" value="Updates">I would like to receive Conference updates only.
-                                    <input id="reg_newsletter" type="checkbox" name="newsletter" value="Monthly Newsletter">I would like to receive your monthly email newsletter.
+                                    <input id="" type="checkbox" name="newsletters[]" value="conf_updates">I would like to receive Conference updates only.
+                                    <input id="" type="checkbox" name="newsletters[]" value="monthly">I would like to receive your monthly email newsletter.
                                 </p>
 							</div>
                             
@@ -223,7 +226,7 @@
                             </div>
                         </form>
                         
-						<script type="text/javascript" src="http://form.myjotform.com/jsform/31812064411543"></script>
+						<!--script type="text/javascript" src="http://form.myjotform.com/jsform/31812064411543"></script-->
                     </div>
                 </div>
             </div>
@@ -246,7 +249,7 @@
 <!-- End Back to Top -->
 
 <!-- Js -->
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script> <!-- jQuery Core -->
+<script src="_include/js//jquery.js"></script> <!-- jQuery Core -->
 <script src="_include/js/bootstrap.min.js"></script> <!-- Bootstrap -->
 <script src="_include/js/supersized.3.2.7.min.js"></script> <!-- Slider -->
 <script src="_include/js/waypoints.js"></script> <!-- WayPoints -->
@@ -256,7 +259,12 @@
 <script src="_include/js/jquery.fancybox-media.js"></script> <!-- Fancybox for Media -->
 <script src="_include/js/jquery.tweet.js"></script> <!-- Tweet -->
 <script src="_include/js/plugins.js"></script> <!-- Contains: jPreloader, jQuery Easing, jQuery ScrollTo, jQuery One Page Navi -->
+<script src="_include/js/jquery.validate.js"></script> <!-- Only for the registration page -->
+<script src="_include/js/placeholder.js"></script> <!-- Only for the registration page -->
+<script src="_include/js/jquery.cookie.js"></script>
+<script src="_include/js/register.js"></script> <!-- Only for the registration page -->
 <script src="_include/js/main.js"></script> <!-- Default JS -->
+
 <!-- End Js -->
 
 </body>
