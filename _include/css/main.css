@@ -742,6 +742,10 @@ nav#menu #menu-nav li a:hover {
 	padding-left: 0px;
 }
 
+.conf2014 li {
+        line-height: 28px;
+}
+
 /* ==================================================
    Section Portfolio
 ================================================== */
