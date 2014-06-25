@@ -46,6 +46,26 @@ BRUSHED.listenerMenu = function(){
    Slider Options
 ================================================== */
 
+// Copy Manager
+var copyFactory = function () {
+    if (window.location.pathname.search('/cape-town') > -1) {
+        return function (){
+                   return {
+                               mainHeader:'<div class="slide-content">Mission Explosion:<br />Reaching Cape Town For Jesus<br />12 - 15 December 2014</div>'
+                          };
+               };    
+    }    
+    if (window.location.pathname.search('/port-elizabeth') > -1) {
+        return function (){
+                   return {
+                               mainHeader:'<div class="slide-content">Mission Explosion:<br />Reaching Port Elizabeth For Jesus<br />5 - 7 December 2014</div>'
+                          };
+               };    
+    }    
+}; 
+
+var copyManager = copyFactory(); 
+
 BRUSHED.slider = function(){
 	$.supersized({
 		// Functionality
@@ -76,11 +96,31 @@ BRUSHED.slider = function(){
 		slide_links				:	'blank',	// Individual links for each slide (Options: false, 'num', 'name', 'blank')
 		thumb_links				:	0,			// Individual thumb links for each slide
 		thumbnail_navigation    :   0,			// Thumbnail navigation
-		slides 					:  	[			// Slideshow Images
-											{image : '_include/img/slider-images/image01.jpg', title : '<div class="slide-content">Mission Explosion:<br />Reaching Cape Town For Jesus<br />12 - 15 December 2014</div>', thumb : '', url : ''},
-											{image : '_include/img/slider-images/image02.jpg', title : '<div class="slide-content">Mission Explosion:<br />Reaching Cape Town For Jesus<br />12 - 15 December 2014</div>', thumb : '', url : ''},
-											{image : '_include/img/slider-images/image03.jpg', title : '<div class="slide-content">Mission Explosion:<br />Reaching Cape Town For Jesus<br />12 - 15 December 2014</div>', thumb : '', url : ''},
-											{image : '_include/img/slider-images/image04.jpg', title : '<div class="slide-content">Mission Explosion:<br />Reaching Cape Town For Jesus<br />12 - 15 December 2014</div>', thumb : '', url : ''}  
+		slides 					:  	[													
+                                        {
+                                            image : '_include/img/slider-images/image01.jpg', 
+                                            title : copyManager().mainHeader, 
+                                            thumb : '', 
+                                            url   : ''
+                                        },
+									    {
+                                            image : '_include/img/slider-images/image02.jpg', 
+                                            title : copyManager().mainHeader, 
+                                            thumb : '', 
+                                            url   : ''
+                                        },
+									    {
+                                            image : '_include/img/slider-images/image03.jpg', 
+                                            title : copyManager().mainHeader, 
+                                            thumb : '', 
+                                            url   : ''
+                                        },
+									    {
+                                            image : '_include/img/slider-images/image04.jpg', 
+                                            title : copyManager().mainHeader, 
+                                            thumb : '', 
+                                            url   : ''
+                                        }  
 									],
 									
 		// Theme Options			   
