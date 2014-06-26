@@ -10,7 +10,7 @@ if (isset($_POST['full_name'])) {
         array('field_name'=>'email',          'required'=>true,   'type'=>'email'),
         array('field_name'=>'mobile',         'required'=>true,   'type'=>'numeric'),
         array('field_name'=>'gender',         'required'=>true,   'type'=>'radio',     'defaults'=>array('m', 'f')),
-        array('field_name'=>'entry_type',     'required'=>true,   'type'=>'radio',     'defaults'=>array('entry', 'half_entry', 'full_entry', 'sponsor')),
+        array('field_name'=>'entry_type',     'required'=>true,   'type'=>'radio',     'defaults'=>array('entry', 'half_entry', 'full_entry', 'sponsor', 'pe_entry')),
         array('field_name'=>'entry_location', 'required'=>true,   'type'=>'radio',     'defaults'=>array('pe', 'ct', 'not sure')),
         array('field_name'=>'meals',          'required'=>false,  'type'=>'checkbox',  'defaults'=>array('sabbath', 'sunday', 'monday')),
         array('field_name'=>'accomodation',   'required'=>false,  'type'=>'radio',     'defaults'=>array('yes', 'no')),
