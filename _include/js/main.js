@@ -486,6 +486,15 @@ $(document).ready(function(){
 	BRUSHED.accordion();
 	BRUSHED.toggle();
 	BRUSHED.toolTip();
+
+    $("#menu-nav a").click(function() {
+        var elem = $(this);
+        if (elem.attr("target") && elem.attr('href').search('http://') > -1) {
+            window.open(elem.attr('href'), '_blank');
+        }
+
+    });
+
 });
 
 $(window).resize(function(){
