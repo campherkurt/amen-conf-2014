@@ -3,7 +3,7 @@ var ticketCopyManager = function(entryType) {
             copy = {
                 entry: {
                     'ticket_name': "Entry Ticket- R200",
-                    'blurb': "Food and Accommodation not included."
+                    'blurb': "Full Access to all combined services and special seminars on Evangelism, Relationships, End Time Events and more."
                 },
                 half_entry: {
                     'ticket_name': "Half Conference Ticket- R300",
@@ -17,6 +17,10 @@ var ticketCopyManager = function(entryType) {
                 sponsor: {
                     'ticket_name': "Sponsor Ticket- R2000",
                     'blurb': "Includes stationery, cap, bag and t-shirt."
+                },
+                pe_entry: {
+                    'ticket_name': "Entry Ticket- R50",
+                    'blurb': "Full Access to all combined services and special seminars on Evangelism, Relationships, End Time Events and more."
                 }
         };
         $('#ticket_name').html(copy[entryType].ticket_name);
