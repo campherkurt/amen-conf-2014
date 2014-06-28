@@ -10,6 +10,18 @@ var ticketFactory = function(ticketID){
         window.location = '/register.html';
     };
 };
+
+
+var menuManager = function(EventLocation) {
+    $(".menu-item").each(function(item, elem){
+         var oldHref = $(elem).attr('href');
+         $(elem).attr('href', "/" + EventLocation + oldHref);
+    }); 
+        
+};
+
+
+
 $(document).ready(function() {
     $(".registerhere").click(function(e) {
        e.preventDefault();
@@ -17,5 +29,5 @@ $(document).ready(function() {
        ticketSetter();
     });
 
-    
+    menuManager($.cookie('amenConf2014__Location'));
 });

@@ -92,6 +92,9 @@ $(document).ready(function(){
                         $('html,body').animate({scrollTop: $("#reg-form input[name='" + errors[0].field_name + "']").offset().top - 50},'slow');
                         // Add successful feedback
                     }
+                    else {
+                        window.location = "/thank-you.html";    
+                    }
                 },
                 error: function(x, e, r) {
                     //console.log(x);
