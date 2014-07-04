@@ -63,7 +63,7 @@ $(document).ready(function(){
             },    
             mobile: "required",
             gender: "required",
-            payment: "required",
+            payment: "required"
             
         },
         messages: {
@@ -72,7 +72,7 @@ $(document).ready(function(){
             email: "Please enter a valid email address.",
             mobile: "Please enter a valid mobile number.",
             gender: "Please enter a valid choice.",
-            payment: "required",
+            payment: "required"
             
         },
         submitHandler: function(e) {
