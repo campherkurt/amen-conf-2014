@@ -1183,6 +1183,48 @@ nav#menu #menu-nav li a:hover {
 	margin-bottom: 1px;	
 }
 
+.item, .item-long {
+	    border: none;
+	-webkit-border-radius: 0;
+	-moz-border-radius: 0;
+    border-radius: 0;
+    -webkit-box-shadow: none;
+	-moz-box-shadow: none;
+	box-shadow: none;
+	background: #26292E;
+    color: #FFFFFF;
+    font-size: 16px;
+    height: auto;
+    padding: 15px 15px 12px 15px;
+	margin: 1px 0px;
+    resize: none;
+    text-align: left;
+}
+	
+	.item input, .item label {
+		color: #7F8289;
+		font-size: 16px;
+	}
+
+	.item-long input, .item-long label {
+		color: #7F8289;
+		font-size: 16px;
+	}	
+
+	.item input {
+		width: 50px !important;
+	}
+
+	.item label, .item-long label {
+		display: inline !important;
+	}
+
+	.item-long input {
+		width: 50px !important;
+	}
+
+
+
 #reg-form input,
 #reg-form textarea {
     border: none;
@@ -1203,6 +1245,8 @@ nav#menu #menu-nav li a:hover {
 	
     resize: none;
 }
+
+
 
 #reg-form input {
     width: 100%;
@@ -1715,4 +1759,18 @@ footer .credits {
 }
 #contact {
     display: none;
+}
+
+.attendence {
+    font-size: 20px;    
+}
+
+.attendence li {
+    padding-top: 5px;
+    padding-bottom: 20px;   
+}
+
+.strong {
+   font-weight: 600;
+   color: #DE5E60;    
 }
