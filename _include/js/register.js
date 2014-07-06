@@ -29,12 +29,27 @@ var ticketCopyManager = function(entryType) {
 }; 
     
 
+var reformatForm = function(type) {
+    if (type == "port-elizabeth") {
+        $("#meals_box").remove();            
+        $("#accom_box").remove();            
 
+    }    
+};
+
+var menuClicks = function() {
+    $(".menu-item").each(function(index, elem) {
+       console.log("Just doi");
+       $(elem).click(function(){
+           window.location = $(this).attr('href');        
+       }); 
+    });    
+};
 
 $(document).ready(function(){
 
     ticketCopyManager($.cookie('amenConf2014__ticketType'));
-    
+     
     $("#reg-form input[name='entry_type']").val($.cookie('amenConf2014__ticketType'));
     var confLocation = $.cookie('amenConf2014__Location');
     if (confLocation === "cape-town") {
@@ -48,7 +63,9 @@ $(document).ready(function(){
         $("#reg-form input[name='entry_location']").val('not sure');
     }
 
-
+    reformatForm(confLocation);
+    menuClicks();
+    
     $("#reg-submit").click(function(){
         $("#reg-form").trigger('submit'); 
         return false 
