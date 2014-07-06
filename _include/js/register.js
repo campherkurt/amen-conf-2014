@@ -37,12 +37,19 @@ var reformatForm = function(type) {
     }    
 };
 
-
+var menuClicks = function() {
+    $(".menu-item").each(function(index, elem) {
+       console.log("Just doi");
+       $(elem).click(function(){
+           window.location = $(this).attr('href');        
+       }); 
+    });    
+};
 
 $(document).ready(function(){
 
     ticketCopyManager($.cookie('amenConf2014__ticketType'));
-    
+     
     $("#reg-form input[name='entry_type']").val($.cookie('amenConf2014__ticketType'));
     var confLocation = $.cookie('amenConf2014__Location');
     if (confLocation === "cape-town") {
@@ -57,8 +64,8 @@ $(document).ready(function(){
     }
 
     reformatForm(confLocation);
-   
-
+    menuClicks();
+    
     $("#reg-submit").click(function(){
         $("#reg-form").trigger('submit'); 
         return false 
