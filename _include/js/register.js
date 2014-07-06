@@ -29,6 +29,14 @@ var ticketCopyManager = function(entryType) {
 }; 
     
 
+var reformatForm = function(type) {
+    if (type == "port-elizabeth") {
+        $("#meals_box").remove();            
+        $("#accom_box").remove();            
+
+    }    
+};
+
 
 
 $(document).ready(function(){
@@ -48,6 +56,8 @@ $(document).ready(function(){
         $("#reg-form input[name='entry_location']").val('not sure');
     }
 
+    reformatForm(confLocation);
+   
 
     $("#reg-submit").click(function(){
         $("#reg-form").trigger('submit'); 
