@@ -1774,3 +1774,7 @@ footer .credits {
    font-weight: 600;
    color: #DE5E60;    
 }
+
+#conference {
+  padding-bottom: 80px; 
+}
