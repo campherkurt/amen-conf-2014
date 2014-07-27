@@ -2,20 +2,20 @@ var ticketCopyManager = function(entryType) {
         var ticketCopyBuilder;
             copy = {
                 entry: {
-                    'ticket_name': "Entry Ticket- R200",
+                    'ticket_name': "Entry Ticket- R150",
                     'blurb': "Full Access to all combined services and special seminars on Evangelism, Relationships, End Time Events and more."
                 },
                 half_entry: {
-                    'ticket_name': "Half Conference Ticket- R300",
+                    'ticket_name': "Conference Ticket- R250",
                     'blurb': "Includes stationery and cap."
                 },    
                 full_entry: {
-                    'ticket_name': "Full Conference Ticket- R500",
+                    'ticket_name': "Premium Conference Ticket- R500",
                     'blurb': "Includes stationery, cap, bag and t-shirt."
                     
                 },
                 sponsor: {
-                    'ticket_name': "Sponsor Ticket- R2000",
+                    'ticket_name': "Sponsor Ticket- R1500",
                     'blurb': "Includes stationery, cap, bag and t-shirt."
                 },
                 pe_entry: {
@@ -37,14 +37,6 @@ var reformatForm = function(type) {
     }    
 };
 
-var menuClicks = function() {
-    $(".menu-item").each(function(index, elem) {
-       console.log("Just doi");
-       $(elem).click(function(){
-           window.location = $(this).attr('href');        
-       }); 
-    });    
-};
 
 $(document).ready(function(){
 
@@ -64,7 +56,6 @@ $(document).ready(function(){
     }
 
     reformatForm(confLocation);
-    menuClicks();
     
     $("#reg-submit").click(function(){
         $("#reg-form").trigger('submit'); 
@@ -114,7 +105,7 @@ $(document).ready(function(){
                     }
                 },
                 error: function(x, e, r) {
-                    //console.log(x);
+                    console.log(x);
                 }
             });
         },   
