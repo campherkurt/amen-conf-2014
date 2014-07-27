@@ -20,7 +20,14 @@ var menuManager = function(EventLocation) {
         
 };
 
-
+var menuClicks = function() {
+    $(".menu-item").each(function(index, elem) {
+       console.log("Just doi");
+       $(elem).click(function(){
+           window.location = $(this).attr('href');
+       });
+    });
+};
 
 $(document).ready(function() {
     $(".registerhere").click(function(e) {
@@ -30,4 +37,5 @@ $(document).ready(function() {
     });
 
     menuManager($.cookie('amenConf2014__Location'));
+    menuClicks();
 });
